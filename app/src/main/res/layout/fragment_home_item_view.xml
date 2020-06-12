@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.ovadyah.echome.view.SmoothNestedScrollLayout
+        android:id="@+id/scroll_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:nest_scroll_content="@+id/scroll_list_viewpager"
+        app:nest_scroll_inner_header="@+id/scroll_page_indicator"
+        app:nest_scroll_top_view="@+id/scroll_top_view">
+
+        <RelativeLayout
+            android:id="@+id/scroll_top_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/scroll_top_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:background="#44ffffff"
+                android:scrollbars="none"/>
+        </RelativeLayout>
+
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/scroll_page_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ffffffff"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="#0099ff"
+            app:tabSelectedTextColor="#0099ff"
+            app:tabTextColor="#cccccc" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/scroll_list_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.ovadyah.echome.view.SmoothNestedScrollLayout>
+
+
+    <!--<RelativeLayout
+        android:id="@+id/top_transparent_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:text="返回"
+            android:textColor="#0099ee"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="透明背景栏"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/bottom_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#789"
+        android:paddingStart="30dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="底部操作按钮" />
+    </FrameLayout>-->
+</android.support.constraint.ConstraintLayout>
