@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.OverScroller;
 
 import com.ovadyah.echome.R;
+import com.ovadyah.echome.port.AsyncGetPort;
 
 import java.util.ArrayList;
 
@@ -322,19 +323,21 @@ public class SmoothNestedScrollLayout extends LinearLayout implements NestedScro
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         final int action = ev.getAction();
+        float x= ev.getX();
+        float y = ev.getY();
 
         switch (action) {
             case MotionEvent.ACTION_MOVE: {
                 if (mDragging) {
                     return true;
                 }
-                float y = ev.getY();
-                if (y > mTopScrollHeight + mInnerOffsetHeight - getScrollY()) {
+
+                float curryY = ev.getY();
+                if (curryY > mTopScrollHeight + mInnerOffsetHeight - getScrollY()) {
                     return false;
                 }
                 final float dy = Math.abs(mLastY - ev.getY());
-
-                if (dy > mTouchSlop) {
+                if (dy > mTouchSlop ) {
                     // 只有手指滑动距离大于阈值时，才会开始拦截
                     // Start scrolling!
                     getParent().requestDisallowInterceptTouchEvent(true);
@@ -351,7 +354,7 @@ public class SmoothNestedScrollLayout extends LinearLayout implements NestedScro
                 mDragging = false;
                 break;
         }
-        return false;
+        return super.onInterceptTouchEvent(ev);
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -555,6 +558,9 @@ public class SmoothNestedScrollLayout extends LinearLayout implements NestedScro
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
+        if (oldt != t){
+            AsyncGetPort.getInstance().triggerOnScrollTopListener(t == 0);
+        }
         if (mScrollListener != null) {
             mScrollListener.onNestScrolling(t - oldt, t);
         }

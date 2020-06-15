@@ -1,1 +1,13 @@
+/.idea/
+*.iml
+.DS_Store
 /build
+/.svn
+deps.*
+/.idea/workspace.xml
+/.idea/libraries
+/.idea/modules.xml
+/.idea/gradle.xml
+/.idea/vcs.xml
+.idea/*
+!/.idea/scopes

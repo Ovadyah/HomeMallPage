@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import com.ovadyah.echome.R;
 import com.ovadyah.echome.adapter.ScrollTopAdapter;
 import com.ovadyah.echome.fragment.TabItemFragment;
+import com.ovadyah.echome.port.AsyncGetPort;
 import com.ovadyah.echome.view.SmoothNestedScrollLayout;
 
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class HomeItemFragment extends Fragment {
     private SmoothNestedScrollLayout mScrollLayout;
 //    private View mTopActionBar;
 //    private View mBottomBar;
+    private boolean isScrollTop;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,7 @@ public class HomeItemFragment extends Fragment {
         mTopRecyclerView.setNestedScrollingEnabled(false);
         mTopRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         List<String> list = new ArrayList<>();
-        for (int i=0;i<20;i++){
+        for (int i=0;i<8;i++){
             list.add(""+i);
         }
         mTopRecyclerView.setAdapter(new ScrollTopAdapter(getContext(),list));
@@ -135,8 +137,12 @@ public class HomeItemFragment extends Fragment {
         // 添加 top action bar 渐变 alpha 效果
 //        mTopActionBar.getBackground().setAlpha(0);
 //        mScrollLayout.setScrollListener((dy, scrollY) -> {
-//            int alpha = scrollY * 255 / mScrollLayout.getTopScrollHeight();
-//            mTopActionBar.getBackground().setAlpha(alpha);
+//            if (isScrollTop != (scrollY == 0)){
+//                isScrollTop = scrollY == 0;
+//                AsyncGetPort.getInstance().triggerOnScrollTopListener(scrollY == 0);
+//            }
+////            int alpha = scrollY * 255 / mScrollLayout.getTopScrollHeight();
+////            mTopActionBar.getBackground().setAlpha(alpha);
 //        });
     }
 
