@@ -1,37 +1,37 @@
 package com.ovadyah.echome;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.ovadyah.echome.home.HomeFragment;
-
-public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(getLayoutResId());
-        this.initFragment();
-    }
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     protected int getLayoutResId() {
         return R.layout.activity_main;
     }
 
-
-    private void initFragment() {
-        FragmentManager fm = this.getSupportFragmentManager();
-        Fragment fragment = fm.findFragmentById(R.id.fragment_container);
-        if (fragment == null) {
-            fragment = this.createFragment();
-            fm.beginTransaction().add(R.id.fragment_container, fragment).commit();
-        }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(getLayoutResId());
+        this.initView();
     }
 
-    protected Fragment createFragment() {
-        return HomeFragment.newInstance();
+    private void initView() {
+        findViewById(R.id.btn_ec_home1).setOnClickListener(this);
+        findViewById(R.id.btn_ec_home2).setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        int vId = v.getId();
+        switch (vId){
+            case R.id.btn_ec_home1:
+                ECHome1Activity.launch(this);
+                break;
+            case R.id.btn_ec_home2:
+                ECHome2Activity.launch(this);
+                break;
+        }
     }
 }

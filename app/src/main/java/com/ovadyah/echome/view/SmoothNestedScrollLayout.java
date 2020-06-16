@@ -55,6 +55,11 @@ public class SmoothNestedScrollLayout extends LinearLayout implements NestedScro
     private int mOuterCoverTopHeight;
     private int mOuterCoverBottomHeight;
     private int mInnerOffsetHeight;
+    /**
+     * 是否滚动到顶部
+     * 默认为true
+     */
+    private boolean isScrollTop = true;
 
     public SmoothNestedScrollLayout(Context context) {
         super(context);
@@ -373,7 +378,7 @@ public class SmoothNestedScrollLayout extends LinearLayout implements NestedScro
                 return true;
             case MotionEvent.ACTION_MOVE:
                 float dy = y - mLastY;
-                if (!mDragging && Math.abs(y - mFirstY) > mTouchSlop) {
+                if (!mDragging && Math.abs(mLastY - y) >  ViewConfiguration.getTouchSlop()) {
                     mDragging = true;
                 }
 
@@ -558,7 +563,8 @@ public class SmoothNestedScrollLayout extends LinearLayout implements NestedScro
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
-        if (oldt != t){
+        if (isScrollTop != (t == 0)){
+            isScrollTop = t == 0;
             AsyncGetPort.getInstance().triggerOnScrollTopListener(t == 0);
         }
         if (mScrollListener != null) {

@@ -45,6 +45,54 @@ public class NestedScrollLayout extends NestedScrollView implements OnScrollTopL
         AsyncGetPort.getInstance().setOnScrollTopListener(this);
     }
 
+    /**
+     * 解决滚动过程中刷新完毕导致触摸事件丢失的问题
+     * @param ev
+     * @return
+     */
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        try {
+            //解决子控件和父控件的滑动影响
+            if (isScrollTop && getScrollVertically(0)){
+                getParent().requestDisallowInterceptTouchEvent(false);
+            } else {
+                //当滑动recyclerView时，告知父控件不要拦截事件，交给子view处理
+                getParent().requestDisallowInterceptTouchEvent(true);
+            }
+            return super.dispatchTouchEvent(ev);
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+
+    /**
+     * 获取滚动方向
+     * @param vertically
+     * Value：0 顶部，1底部
+     * @return
+     */
+    private boolean getScrollVertically(int vertically){
+        boolean isScrollVertically = false;
+        if (vertically == 0){
+            if(canScrollVertically(-1)){
+                isScrollVertically = false;
+            }else {
+                //滑动到顶部
+                isScrollVertically = true;
+            }
+        } else if (vertically == 1){
+            if(canScrollVertically(1)){
+                isScrollVertically = false;
+            }else {
+                //滑动到底部
+                isScrollVertically = true;
+            }
+        }
+        return isScrollVertically;
+    }
+
     @SuppressLint("RestrictedApi")
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
@@ -68,8 +116,6 @@ public class NestedScrollLayout extends NestedScrollView implements OnScrollTopL
                 } else {
                     return !(xDistance >= yDistance || yDistance < scaledTouchSlop) && isNeedScroll;
                 }
-
-
         }
         return super.onInterceptTouchEvent(ev);
     }

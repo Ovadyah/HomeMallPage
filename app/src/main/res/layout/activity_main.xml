@@ -1,5 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/fragment_container"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <Button
+            android:id="@+id/btn_ec_home1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="20dp"
+            android:textColor="@android:color/background_dark"
+            android:textSize="18dp"
+            android:text="Demo1 自定义NestedScrollView 和 NestedScrollingParent2嵌套滑动解决 + （ViewPager + RecyclerView）"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/btn_ec_home2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="20dp"
+            android:textColor="@android:color/background_dark"
+            android:textSize="18dp"
+            android:text="Demo2 自定义 NestedScrollingParent2 嵌套滑动解决+ （RecyclerView + ViewPager + RecyclerView）"
+            android:textAllCaps="false"/>
+
+
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

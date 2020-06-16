@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 import com.ovadyah.echome.R;
@@ -32,7 +33,6 @@ public class HomeItemFragment extends Fragment {
     private SmoothNestedScrollLayout mScrollLayout;
 //    private View mTopActionBar;
 //    private View mBottomBar;
-    private boolean isScrollTop;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

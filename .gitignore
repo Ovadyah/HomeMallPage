@@ -23,6 +23,7 @@ local.properties
 /.idea/modules.xml
 /.idea/gradle.xml
 /.idea/vcs.xml
+/.idea/*
 
 
 /.DS_Store

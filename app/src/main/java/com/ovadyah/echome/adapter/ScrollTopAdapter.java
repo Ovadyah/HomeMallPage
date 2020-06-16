@@ -1,17 +1,20 @@
 package com.ovadyah.echome.adapter;
+
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.ovadyah.echome.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScrollTopAdapter extends RecyclerView.Adapter<ScrollTopAdapter.ImgViewHolder> {
+public class ScrollTopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder > {
+
     private final List<String> mData = new ArrayList<>();
     private final Context mContext;
 
@@ -21,13 +24,16 @@ public class ScrollTopAdapter extends RecyclerView.Adapter<ScrollTopAdapter.ImgV
     }
 
     @Override
-    public ImgViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder  onCreateViewHolder(ViewGroup parent, int viewType) {
         return ImgViewHolder.getDefault(parent);
     }
 
     @Override
-    public void onBindViewHolder(ImgViewHolder holder, int position) {
-        holder.update(mData.get(position));
+    public void onBindViewHolder(RecyclerView.ViewHolder  holder, int position) {
+        if (holder instanceof ImgViewHolder){
+            ((ImgViewHolder)holder).update(mData.get(position));
+        }
+
     }
 
     @Override
@@ -36,20 +42,23 @@ public class ScrollTopAdapter extends RecyclerView.Adapter<ScrollTopAdapter.ImgV
     }
 
     public static class ImgViewHolder extends RecyclerView.ViewHolder {
-        private final ImageView text;
+        private final ImageView img;
+        private final TextView text;
 
         public ImgViewHolder(View itemView) {
             super(itemView);
-            text = itemView.findViewById(R.id.image);
+            img = itemView.findViewById(R.id.image);
+            text = itemView.findViewById(R.id.text);
         }
 
         public static ImgViewHolder getDefault(ViewGroup parent) {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_scroll_top_item, parent, false);
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_scroll_top_img_item, parent, false);
             return new ImgViewHolder(v);
         }
 
         public void update(String s) {
-            text.setTag(s);
+            text.setText(s);
+            img.setTag(s);
         }
     }
 }
