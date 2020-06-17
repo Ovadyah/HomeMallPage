@@ -19,11 +19,11 @@
         </activity>
 
         <activity
-            android:name="com.ovadyah.echome.ECHome1Activity"
+            android:name="com.ovadyah.echome.demo1.ECHome1Activity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.ovadyah.echome.ECHome2Activity"
+            android:name="com.ovadyah.echome.demo2.ECHome2Activity"
             android:exported="false"
             android:screenOrientation="portrait"/>
     </application>

@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.ovadyah.echome.demo1.ECHome1Activity;
+import com.ovadyah.echome.demo2.ECHome2Activity;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     protected int getLayoutResId() {

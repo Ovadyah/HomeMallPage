@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ovadyah.echome.demo2.view.NestedScrollingOuterLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nested_scrolling_outer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</com.ovadyah.echome.demo2.view.NestedScrollingOuterLayout>
+<!--<com.scwang.smart.refresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/refreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:srlEnablePreviewInEditMode="false">
+
+    <com.scwang.smart.refresh.header.ClassicsHeader
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</com.scwang.smart.refresh.layout.SmartRefreshLayout>-->
+

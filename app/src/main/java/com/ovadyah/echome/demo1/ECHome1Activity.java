@@ -1,4 +1,4 @@
-package com.ovadyah.echome;
+package com.ovadyah.echome.demo1;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,9 +7,11 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.ovadyah.echome.R;
 import com.ovadyah.echome.home.HomeFragment;
 
-public class ECHome2Activity extends AppCompatActivity {
+public class ECHome1Activity extends AppCompatActivity {
+
 
     public static void launch(FragmentActivity activity) {
         Intent intent = new Intent(activity, ECHome1Activity.class);
@@ -17,7 +19,7 @@ public class ECHome2Activity extends AppCompatActivity {
     }
 
     protected int getLayoutResId() {
-        return R.layout.activity_ec_home2;
+        return R.layout.activity_ec_home1;
     }
 
     @Override
@@ -27,12 +29,13 @@ public class ECHome2Activity extends AppCompatActivity {
         this.initFragment();
     }
 
+
     private void initFragment() {
         FragmentManager fm = this.getSupportFragmentManager();
-        Fragment fragment = fm.findFragmentById(R.id.ec_fragment_container2);
+        Fragment fragment = fm.findFragmentById(R.id.ec_fragment_container1);
         if (fragment == null) {
             fragment = this.createFragment();
-            fm.beginTransaction().add(R.id.ec_fragment_container2, fragment).commit();
+            fm.beginTransaction().add(R.id.ec_fragment_container1, fragment).commit();
         }
     }
 
