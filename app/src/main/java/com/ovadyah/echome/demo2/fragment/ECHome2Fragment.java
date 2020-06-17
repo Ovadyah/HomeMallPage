@@ -13,7 +13,6 @@ import com.ovadyah.echome.R;
 import com.ovadyah.echome.demo2.bean.DataItemBean;
 import com.ovadyah.echome.demo2.bean.MultiBaseBean;
 import com.ovadyah.echome.demo2.bean.ViewPagerBean;
-import com.ovadyah.echome.home.HomeItemFragment;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;

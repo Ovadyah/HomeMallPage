@@ -7,10 +7,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.ovadyah.echome.demo1.ECHome1Activity;
 import com.ovadyah.echome.R;
 import com.ovadyah.echome.demo2.fragment.ECHome2Fragment;
-import com.ovadyah.echome.home.HomeFragment;
 
 public class ECHome2Activity extends AppCompatActivity {
 
