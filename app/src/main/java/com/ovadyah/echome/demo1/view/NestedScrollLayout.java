@@ -1,4 +1,4 @@
-package com.ovadyah.echome.view;
+package com.ovadyah.echome.demo1.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -7,8 +7,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 
-import com.ovadyah.echome.listener.OnScrollTopListener;
-import com.ovadyah.echome.port.AsyncGetPort;
+import com.ovadyah.echome.demo1.listener.OnScrollTopListener;
+import com.ovadyah.echome.demo1.port.AsyncGetPort;
 
 /**
  * @Created Ovadyah

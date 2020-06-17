@@ -1,6 +1,6 @@
-package com.ovadyah.echome.port;
+package com.ovadyah.echome.demo1.port;
 
-import com.ovadyah.echome.listener.OnScrollTopListener;
+import com.ovadyah.echome.demo1.listener.OnScrollTopListener;
 
 public class AsyncGetPort {
     private volatile static AsyncGetPort instance;

@@ -1,4 +1,4 @@
-package com.ovadyah.echome.fragment;
+package com.ovadyah.echome.demo1.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ovadyah.echome.R;
-import com.ovadyah.echome.adapter.SimpleAdapter;
+import com.ovadyah.echome.demo1.adapter.SimpleAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

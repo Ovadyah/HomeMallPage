@@ -1,4 +1,4 @@
-package com.ovadyah.echome.home;
+package com.ovadyah.echome.demo1.home;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -10,14 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 import com.ovadyah.echome.R;
-import com.ovadyah.echome.adapter.ScrollTopAdapter;
-import com.ovadyah.echome.fragment.TabItemFragment;
-import com.ovadyah.echome.port.AsyncGetPort;
-import com.ovadyah.echome.view.SmoothNestedScrollLayout;
+import com.ovadyah.echome.demo1.adapter.ScrollTopAdapter;
+import com.ovadyah.echome.demo1.fragment.TabItemFragment;
+import com.ovadyah.echome.demo1.view.SmoothNestedScrollLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,32 +67,38 @@ public class HomeItemFragment extends Fragment {
             list.add(""+i);
         }
         mTopRecyclerView.setAdapter(new ScrollTopAdapter(getContext(),list));
-        mTopRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()) {
+        mTopRecyclerView.postDelayed(new Runnable() {
             @Override
-            public void onMeasure(RecyclerView.Recycler recycler, RecyclerView.State state, int widthSpec, int heightSpec) {
-                int count = state.getItemCount();
-                if (count > 0) {
-                    int realHeight = 0;
-                    int realWidth = 0;
-                    for(int i = 0;i < count; i++){
-                        View view = recycler.getViewForPosition(0);
-                        if (view != null) {
-                            measureChild(view, widthSpec, heightSpec);
-                            int measuredWidth = View.MeasureSpec.getSize(widthSpec);
-                            int measuredHeight = view.getMeasuredHeight();
-                            realWidth = realWidth > measuredWidth ? realWidth : measuredWidth;
-                            realHeight += measuredHeight;
+            public void run() {
+                mTopRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()) {
+                    @Override
+                    public void onMeasure(RecyclerView.Recycler recycler, RecyclerView.State state, int widthSpec, int heightSpec) {
+                        int count = state.getItemCount();
+                        if (count > 0) {
+                            int realHeight = 0;
+                            int realWidth = 0;
+                            for(int i = 0;i < count; i++){
+                                View view = recycler.getViewForPosition(0);
+                                if (view != null) {
+                                    measureChild(view, widthSpec, heightSpec);
+                                    int measuredWidth = View.MeasureSpec.getSize(widthSpec);
+                                    int measuredHeight = view.getMeasuredHeight();
+                                    realWidth = realWidth > measuredWidth ? realWidth : measuredWidth;
+                                    realHeight += measuredHeight;
+                                }
+                                setMeasuredDimension(realWidth, realHeight);
+                            }
+                            if (realHeight > 0){
+                                mTopView.getLayoutParams().height = realHeight;
+                            }
+                        } else {
+                            super.onMeasure(recycler, state, widthSpec, heightSpec);
                         }
-                        setMeasuredDimension(realWidth, realHeight);
                     }
-                    if (realHeight > 0){
-                        mTopView.getLayoutParams().height = realHeight;
-                    }
-                } else {
-                    super.onMeasure(recycler, state, widthSpec, heightSpec);
-                }
+                });
             }
-        });
+        },100);
+
         mIndicator.setupWithViewPager(mViewPager);
 //        mTopActionBar = view.findViewById(R.id.top_transparent_bar);
 //        mTopActionBar.getViewTreeObserver().addOnGlobalLayoutListener(() ->

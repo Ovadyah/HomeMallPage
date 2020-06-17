@@ -1,4 +1,4 @@
-package com.ovadyah.echome.home;
+package com.ovadyah.echome.demo1.home;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ovadyah.echome.R;
-import com.ovadyah.echome.view.NestedScrollLayout;
+import com.ovadyah.echome.demo1.view.NestedScrollLayout;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;

@@ -1,4 +1,4 @@
-package com.ovadyah.echome.view;
+package com.ovadyah.echome.demo1.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -18,7 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.OverScroller;
 
 import com.ovadyah.echome.R;
-import com.ovadyah.echome.port.AsyncGetPort;
+import com.ovadyah.echome.demo1.port.AsyncGetPort;
 
 import java.util.ArrayList;
 
