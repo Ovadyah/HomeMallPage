@@ -1,7 +1,7 @@
-package com.ovadyah.echome.demo2.fragment;
+package com.ovadyah.echome.demo3.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,44 +14,37 @@ import com.ovadyah.echome.demo2.bean.DataItemBean;
 import com.ovadyah.echome.demo2.bean.MultiBaseBean;
 import com.ovadyah.echome.demo2.bean.ViewPagerBean;
 import com.ovadyah.echome.demo2.view.NestedScrollingOuterLayout;
+import com.ovadyah.echome.demo3.fragment.base.ScrollBaseFragment;
+import com.ovadyah.echome.demo3.scrollview.ScrollableHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ECHome2ItemFragment extends Fragment {
-    private NestedScrollingOuterLayout nestedScrollingOuterLayout;
-    private RecyclerView recyclerViewParent;
+public class NestRecyclerViewFragment extends ScrollBaseFragment implements ScrollableHelper.ScrollableContainer{
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    private RecyclerView mRecyclerView;
+
+    public static NestRecyclerViewFragment newInstance() {
+        NestRecyclerViewFragment recyclerViewFragment = new NestRecyclerViewFragment();
+        return recyclerViewFragment;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_ec_home2_item_view, container, false);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_nest_recyclerview, container, false);
         initView(view);
         return view;
     }
 
-    public static ECHome2ItemFragment newInstance() {
-        ECHome2ItemFragment homeFragment = new ECHome2ItemFragment();
-        Bundle bundle = new Bundle();
-        homeFragment.setArguments(bundle);
-        return homeFragment;
-    }
-
     private void initView( View view) {
-        NestedScrollingOuterLayout nestedScrollingOuterLayout = view.findViewById(R.id.nested_scrolling_outer_layout);
-        recyclerViewParent = view.findViewById(R.id.recyclerView_parent);
-        recyclerViewParent.setLayoutManager(new LinearLayoutManager(getContext()));
+        NestedScrollingOuterLayout nestedScrollingOuterLayout = view.findViewById(R.id.nested_scrolling_outer_layout3);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.nest_recycler_view);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         EcHome2NestAdapter adapter = new EcHome2NestAdapter(getContext(),getChildFragmentManager());
         if (nestedScrollingOuterLayout != null) {
             adapter.setNestedParentLayout(nestedScrollingOuterLayout);
         }
-        recyclerViewParent.setAdapter(adapter);
-
+        mRecyclerView.setAdapter(adapter);
         adapter.updateAdapter(getListData());
     }
 
@@ -64,4 +57,8 @@ public class ECHome2ItemFragment extends Fragment {
         return listData;
     }
 
+    @Override
+    public View getScrollableView() {
+        return mRecyclerView;
+    }
 }

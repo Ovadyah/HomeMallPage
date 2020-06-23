@@ -33,7 +33,16 @@
             android:text="Demo2 自定义 NestedScrollingParent2 嵌套滑动解决+ （RecyclerView + ViewPager + RecyclerView）"
             android:textAllCaps="false"/>
 
-
+        <Button
+            android:id="@+id/btn_ec_home3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="20dp"
+            android:textColor="@android:color/background_dark"
+            android:textSize="18dp"
+            android:text="Demo3 ViewPager添加Header形式实现效果,与Demo2结合完美实现多嵌套效果"
+            android:textAllCaps="false"/>
 
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

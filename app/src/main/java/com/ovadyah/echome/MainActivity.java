@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.ovadyah.echome.demo1.ECHome1Activity;
 import com.ovadyah.echome.demo2.ECHome2Activity;
+import com.ovadyah.echome.demo3.ECHome3Activity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initView() {
         findViewById(R.id.btn_ec_home1).setOnClickListener(this);
         findViewById(R.id.btn_ec_home2).setOnClickListener(this);
+        findViewById(R.id.btn_ec_home3).setOnClickListener(this);
     }
 
     @Override
@@ -34,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_ec_home2:
                 ECHome2Activity.launch(this);
+                break;
+            case R.id.btn_ec_home3:
+                ECHome3Activity.launch(this);
                 break;
         }
     }

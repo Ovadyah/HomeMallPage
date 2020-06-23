@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.scwang.smart.refresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home3_refreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:srlEnablePreviewInEditMode="false">
+
+    <com.scwang.smart.refresh.header.ClassicsHeader
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <com.ovadyah.echome.demo3.scrollview.ScrollableLayout
+        android:id="@+id/home3_scrollable_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_head"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#cdcdcd">
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/home3_header_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#ffffffff"
+                app:tabGravity="center"
+                app:tabIndicatorColor="#0099ff"
+                app:tabMode="scrollable"
+                app:tabSelectedTextColor="#0099ff"
+                app:tabTextColor="#cccccc" />
+        </RelativeLayout>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/home3_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ffffffff"
+            app:tabGravity="center"
+            app:tabIndicatorColor="#0099ff"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="#0099ff"
+            app:tabTextColor="#cccccc"
+            android:visibility="gone"/>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/home3_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:overScrollMode="never"
+            app:layout_anchorGravity="bottom"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </com.ovadyah.echome.demo3.scrollview.ScrollableLayout>
+
+</com.scwang.smart.refresh.layout.SmartRefreshLayout>
+

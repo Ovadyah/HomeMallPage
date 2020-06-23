@@ -26,6 +26,10 @@
             android:name="com.ovadyah.echome.demo2.ECHome2Activity"
             android:exported="false"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.ovadyah.echome.demo3.ECHome3Activity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

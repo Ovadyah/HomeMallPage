@@ -1,0 +1,13 @@
+<com.ovadyah.echome.demo2.view.NestedScrollingOuterLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nested_scrolling_outer_layout3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/nest_recycler_view"
+        android:background="#cdcdcd"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</com.ovadyah.echome.demo2.view.NestedScrollingOuterLayout>
