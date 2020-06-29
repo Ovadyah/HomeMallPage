@@ -72,7 +72,7 @@ public class ECHome3Fragment extends BaseFragment {
         mIndicator = view.findViewById(R.id.home3_indicator);
         TabLayout headerTab = view.findViewById(R.id.home3_header_indicator);
 
-        initFragment(mViewPager,mIndicator,headerTab,scrollableLayout);
+        initFragment(mViewPager,mIndicator,headerTab,scrollableLayout,refreshLayout,view.findViewById(R.id.rl_head));
     }
 
     private List<MultiBaseBean> getListData() {

@@ -9,6 +9,7 @@
     <com.scwang.smart.refresh.header.ClassicsHeader
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
     <com.ovadyah.echome.demo3.scrollview.ScrollableLayout
         android:id="@+id/home3_scrollable_layout"
         android:layout_width="match_parent"
@@ -38,12 +39,13 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#ffffffff"
+            android:visibility="gone"
             app:tabGravity="center"
             app:tabIndicatorColor="#0099ff"
             app:tabMode="scrollable"
             app:tabSelectedTextColor="#0099ff"
-            app:tabTextColor="#cccccc"
-            android:visibility="gone"/>
+            app:tabTextColor="#cccccc" />
+
         <android.support.v4.view.ViewPager
             android:id="@+id/home3_viewpager"
             android:layout_width="match_parent"
