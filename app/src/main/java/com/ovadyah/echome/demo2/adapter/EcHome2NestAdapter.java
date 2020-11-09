@@ -3,6 +3,7 @@ package com.ovadyah.echome.demo2.adapter;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.ovadyah.echome.R;
 import com.ovadyah.echome.demo2.adapter.viewHolder.ViewPagerHolder;
 import com.ovadyah.echome.demo2.bean.DataItemBean;
@@ -51,7 +53,7 @@ public class EcHome2NestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         if (viewType == ViewPagerBean.VIEW_PAGE_TYPE  ){
             return ViewPagerHolder.getDefault(parent,mNestedScrollingParent,fragmentManager);
         } else {
-            return ImgViewHolder.getDefault(parent);
+            return ImgViewHolder.getDefault(mContext,parent);
         }
 
     }
@@ -74,23 +76,28 @@ public class EcHome2NestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public static class ImgViewHolder extends RecyclerView.ViewHolder {
         private final ImageView img;
         private final TextView text;
-
-        public ImgViewHolder(View itemView) {
+        private Context mContext;
+        public ImgViewHolder( Context context,View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.imageView);
             text = itemView.findViewById(R.id.nest_textView);
+            this.mContext = context;
         }
 
-        public static ImgViewHolder getDefault(ViewGroup parent) {
+        public static ImgViewHolder getDefault(Context context,ViewGroup parent) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_nested_scroll_test, parent, false);
-            return new ImgViewHolder(v);
+            return new ImgViewHolder(context,v);
         }
 
         public void update(MultiBaseBean dataBean) {
             if (dataBean instanceof DataItemBean){
                 DataItemBean dataItemBean = (DataItemBean) dataBean;
                 text.setText(dataItemBean.text);
-                img.setImageResource(dataItemBean.imgRes);
+                if (!TextUtils.isEmpty(dataItemBean.url)){
+                    Glide.with(mContext).load(dataItemBean.url).into(img);
+                } else {
+                    img.setImageResource(dataItemBean.imgRes);
+                }
             }
 
         }

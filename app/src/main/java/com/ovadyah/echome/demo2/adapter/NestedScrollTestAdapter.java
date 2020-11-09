@@ -3,6 +3,7 @@ package com.ovadyah.echome.demo2.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.ovadyah.echome.R;
 import com.ovadyah.echome.demo2.bean.DataItemBean;
 
@@ -43,8 +45,11 @@ public class NestedScrollTestAdapter extends RecyclerView.Adapter<NestedScrollTe
     public void onBindViewHolder(@NonNull ViewHoder viewHoder, int i) {
         DataItemBean dataBean = list.get(i);
         viewHoder.textView.setText(dataBean.text);
-        viewHoder.imageView.setImageResource(dataBean.imgRes);
-//        ImageLoader.with(context).loadBitmapAsync(dataBean.url,viewHoder.imageView);
+        if (!TextUtils.isEmpty(dataBean.url)) {
+            Glide.with(context).load(dataBean.url).into(viewHoder.imageView);
+        } else {
+            viewHoder.imageView.setImageResource(dataBean.imgRes);
+        }
     }
 
     @Override

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ovadyah.echome.ImageUtils;
 import com.ovadyah.echome.R;
 import com.ovadyah.echome.demo2.adapter.EcHome2NestAdapter;
 import com.ovadyah.echome.demo2.bean.DataItemBean;
@@ -50,8 +51,12 @@ public class NestRecyclerViewFragment extends ScrollBaseFragment implements Scro
 
     private List<MultiBaseBean> getListData() {
         List<MultiBaseBean> listData = new ArrayList<>();
-        for (int i =0;i<10;i++){
-            listData.add(new DataItemBean(String.format("%s%s","加载列表数据----Text----",i+1), "",R.mipmap.maomao));
+        String[] images = ImageUtils.images;
+        int imageles = images.length;
+        for (int i =0;i<20;i++){
+            int ran = (int) (Math.random()*(imageles-i)+1);
+            String imgUrl = images[ran];
+            listData.add(new DataItemBean(String.format("%s%s","加载列表数据----Text----",i+1), imgUrl,R.mipmap.maomao));
         }
         listData.add(new ViewPagerBean());
         return listData;

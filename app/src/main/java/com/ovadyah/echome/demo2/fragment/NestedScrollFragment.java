@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ovadyah.echome.ImageUtils;
 import com.ovadyah.echome.R;
 import com.ovadyah.echome.demo2.adapter.NestedScrollTestAdapter;
 import com.ovadyah.echome.demo2.bean.DataItemBean;
@@ -84,8 +85,12 @@ public class NestedScrollFragment extends Fragment {
 
     private List<DataItemBean> getListData() {
         List<DataItemBean> listData = new ArrayList<>();
-        for (int i =0;i<10;i++){
-            listData.add(new DataItemBean(String.format("%s%s","嵌套列表数据----Item----",i+1), "",R.mipmap.maomao));
+        String[] images = ImageUtils.images;
+        int imageles = images.length;
+        for (int i =0;i<500;i++){
+            int ran = (int) (Math.random()*(imageles-i)+1);
+            String imgUrl = images[ran];
+            listData.add(new DataItemBean(String.format("%s%s","嵌套列表数据----Item----",i+1), imgUrl,R.mipmap.maomao));
         }
         return listData;
     }

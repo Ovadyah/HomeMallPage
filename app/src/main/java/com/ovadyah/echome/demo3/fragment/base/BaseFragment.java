@@ -41,6 +41,7 @@ public abstract class BaseFragment extends Fragment {
         };
         viewPager.setAdapter(mAdapter);
         mScrollLayout.getHelper().setCurrentScrollableContainer(fragmentList.get(0));
+        mScrollLayout.setClickHeadExpand(dip2px(getContext(),50));
         indicator.setupWithViewPager(viewPager);
         headerTab.setupWithViewPager(viewPager);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
